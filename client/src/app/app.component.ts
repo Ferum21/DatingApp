@@ -12,19 +12,17 @@ import { HomeComponent } from "./home/home.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  private accountService = inject(AccountService)
+  private accountService = inject(AccountService);
   title = 'Date me';
 
   ngOnInit(): void {
     this.setCurrentUser();
   }
 
-  setCurrentUser() {
-    const userString = localStorage.getItem("user")
-    if (!userString) {
-      return;
-    }
+  setCurrentUser(): void {
+    const userString = localStorage.getItem("user");
+    if (!userString) return;
     const user = JSON.parse(userString);
-    this.accountService.currentUser.set(user)
+    this.accountService.currentUser.set(user);
   }
 }
